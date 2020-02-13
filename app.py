@@ -25,9 +25,7 @@ def main():
     instance.init(db=MotorClient(os.environ["DATABASE_URL"])["workforce_app"])
     app = MainApplication(templates=document_templates)
     app.create_indexes()
-    app.listen(8080)
-    print(f"Listening on Port 8080")
-
+    app.listen(int(os.environ.get("PORT", 5000)))
 
 if __name__ == "__main__":
     main()
